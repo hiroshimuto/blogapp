@@ -1,0 +1,34 @@
+<nav class="teal accent-3">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Logo</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="sass.html">ログイン</a></li>
+      <li><a href="/posts/new">新規投稿</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="contents">
+  <div class="contents-main">
+    <% @posts.each do |post| %>
+      <hr>
+        <div class="row">
+          <div class="col s12 m7">
+            <div class="card middle">
+              <div class="card-image">
+                <img src="<%= post.image %>">
+                <span class="card-title"><%= post.title %></span>
+              </div>
+              <div class="card-content">
+                <p><%= post.content %></p>
+              </div>
+              <div class="card-action">
+                <a href="#">投稿者名</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    <%= paginate(@posts) %>
+  </div>
+</div>
