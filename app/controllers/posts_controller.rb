@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: :index
 
   def index
-    @posts = Post.all.order("created_at DESC").page(params[:page]).per(3)
-    #変数postsを定義する。Postモデルからすべてのデータを取得し、orderメソッドで最新の投稿順にする。pageメソッドはビューのリクエストの際にparamsの中にpageというキーが追加されて、その値がビューで指定したページ番号となる。perメソッドは1ページに表示したい件数を指定。
+    @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(3)
+    #変数postsを定義する。Postモデルからすべてのデータを取得し、orderメソッドで最新の投稿順にする。pageメソッドはビューのリクエストの際にparamsの中にpageというキーが追加されて、その値がビューで指定したページ番号となる。perメソッドは1ページに表示したい件数を指定。includeはn+1問題を解決するために記載
   end
 
   def new
