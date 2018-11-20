@@ -16,6 +16,11 @@ class PostsController < ApplicationController
     #new.html.erbでsubmitが押されるとcreateアクションが実行される。パラメーターが送られてくる。privateメソッドで受け取るパラメーターを制限。
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy if post.user_id == current_user.id
+  end
+
   private
 
   def post_params

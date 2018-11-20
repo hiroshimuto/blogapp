@@ -14,7 +14,16 @@
                 <p><%= post.content %></p>
               </div>
               <div class="card-action">
-                <a href="#"><%= post.user.name %></a>
+                <ul>
+                  <li><a href="#"><%= post.user.name %></a></li>
+                  <% if user_signed_in? && current_user.id == post.user_id %>
+                  <li>
+                    <%= link_to "/posts/#{post.id}", method: :delete do %>
+                      <i class="material-icons">delete</i>
+                    <% end %>
+                  </li>
+                  <% end %>
+                </ul>
               </div>
             </div>
           </div>
