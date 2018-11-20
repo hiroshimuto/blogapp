@@ -54,3 +54,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #ページネーションのgem
 gem 'kaminari'
+#ログイン機能のgem
+gem 'devise'
