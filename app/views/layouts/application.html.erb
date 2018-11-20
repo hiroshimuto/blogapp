@@ -20,6 +20,22 @@
 
   </head>
 
+  <nav class="teal accent-3">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if user_signed_in? %>
+          <li><a class="mypage" href="/users/<%= current_user.id %>">マイページ</a></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete  %></li>
+          <li><a class="post" href="/posts/new">投稿する</a></li>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: 'login' %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: 'register' %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
   <body>
     <%= yield %>
   </body>
