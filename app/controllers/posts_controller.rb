@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
+    Post.create(title: post_params[:title], content: post_params[:content], image: post_params[:image], user_id: current_user.id)
     #new.html.erbでsubmitが押されるとcreateアクションが実行される。パラメーターが送られてくる。privateメソッドで受け取るパラメーターを制限。
   end
 
