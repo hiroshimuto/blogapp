@@ -1,5 +1,6 @@
 
 <div class="contents">
+  <p><%= @name %>さんの投稿一覧</p>
   <div class="contents-main">
     <% @posts.each do |post| %>
       <hr>
@@ -14,16 +15,7 @@
                 <p><%= post.content %></p>
               </div>
               <div class="card-action">
-                <ul>
-                  <li><a href="#"><%= post.user.name %></a></li>
-                  <% if user_signed_in? && current_user.id == post.user_id %>
-                  <li>
-                    <%= link_to "/posts/#{post.id}", method: :delete do %>
-                      <i class="material-icons">delete</i>
-                    <% end %>
-                  </li>
-                  <% end %>
-                </ul>
+                <a href="#"><%= post.user.name%></a>
               </div>
             </div>
           </div>
