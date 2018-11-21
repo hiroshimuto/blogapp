@@ -1,6 +1,28 @@
-<%= form_for @post do |f| %>
-  タイトル: <%= f.text_field :title, placeholder:"タイトルを書いてください" %><br />
-  本文 : <%= f.text_area :content, placeholder:"本文を書いてください" %><br />
-  画像 : <%= f.text_field :image, placeholder:"画像を指定してください" %><br />
-  <%= f.submit class: "btn waves-effect waves-light", type: "submit", value: "投稿" %>
+<div class="center-align">
+<%= form_for @post, html: {class: 'center-align'} do |f| %>
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">mode_edit</i>
+        <%= f.text_field :title, placeholder:"タイトルを書いてください", class:"icon_prefix2" %>
+      </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <%= f.text_area :content, placeholder:"本文を書いてください", class:"materialize-textarea", id:"textarea1" %>
+        </div>
+    </div>
+        <div class="row">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">insert_photo</i>
+        <%= f.text_field :title, placeholder:"画像を指定してください", class:"icon_prefix2" %>
+      </div>
+    </div>
+    <div class="btn waves-effect waves-light">
+      <i class="material-icons right">send</i>
+        <%= f.submit type: "submit", value: "投稿する" %>
+    </div>
 <% end %>
+</div>
+
+

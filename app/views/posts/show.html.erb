@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col s12 m7">
+  <div class="col s7 m3">
     <div class="card middle">
       <div class="card-image">
         <img src="<%= @post.image %>">
@@ -30,13 +30,17 @@
     <!-- ここからフォーム -->
     <% if current_user %>
       <%= form_for [@post, @comment] do |f| %>
-        本文 : <%= f.text_area :text, placeholder:"コメント" %><br />
-        <%= f.submit class: "btn waves-effect waves-light", type: "submit", value: "コメント" %>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">comment</i>
+                <%= f.text_field :text, placeholder:"コメントする..." %>
+            </div>
+          </div>
+          <div class="btn waves-effect waves-light">
+            <i class="material-icons right">send</i>
+              <%= f.submit type: "submit", value: "送信" %>
+          </div>
       <% end %>
-<!--       <%= form_tag("/posts/#{@post.id}/comments", method: :post) do %>
-        <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
-        <input type="submit" value="SENT">
-      <% end %> -->
     <% end %>
   </div>
   <div class="comments">
