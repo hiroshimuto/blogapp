@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :move_to_index, except: :index
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(3)
@@ -14,6 +14,22 @@ class PostsController < ApplicationController
   def create
     Post.create(title: post_params[:title], content: post_params[:content], image: post_params[:image], user_id: current_user.id)
     #new.html.erbでsubmitが押されるとcreateアクションが実行される。パラメーターが送られてくる。privateメソッドで受け取るパラメーターを制限。
+  end
+
+  def show
+    @post = Post.find(params[:id])
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+
+  end
+
+  def update
+    post = Post.find(params[:id])
+    if post.user_id == current_user.id
+      post.update(post_params)
+    end
   end
 
   def destroy

@@ -1,0 +1,6 @@
+<%= form_for @post, url:{action: :update} do |f| %>
+  タイトル: <%= f.text_field :title, placeholder:"タイトルを書いてください" %><br />
+  本文 : <%= f.text_area :content, placeholder:"本文を書いてください" %><br />
+  画像 : <%= f.text_field :image, placeholder:"画像を指定してください" %><br />
+  <%= f.submit class: "btn waves-effect waves-light", type: "submit", value: "更新" %>
+<% end %>
