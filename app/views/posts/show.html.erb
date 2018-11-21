@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col s12 m7">
+    <div class="card middle">
+      <div class="card-image">
+        <img src="<%= @post.image %>">
+        <span class="card-title"><%= @post.title %></span>
+      </div>
+      <div class="card-content">
+        <p><%= @post.content %></p>
+      </div>
+      <div class="card-action">
+        <ul>
+          <li><a href="#"><%= @post.user.name %></a></li>
+          <% if user_signed_in? && current_user.id == @post.user_id %>
+          <li>
+            <%= link_to "/posts/#{@post.id}/edit", method: :get do %>
+              <i class="material-icons">mode_edit</i>
+            <% end %>
+            <%= link_to "/posts/#{@post.id}", method: :delete do %>
+              <i class="material-icons">delete</i>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
