@@ -26,3 +26,27 @@
     </div>
   </div>
 </div>
+  <div class="container">
+    <!-- ここからフォーム -->
+    <% if current_user %>
+      <%= form_for [@post, @comment] do |f| %>
+        本文 : <%= f.text_area :text, placeholder:"コメント" %><br />
+        <%= f.submit class: "btn waves-effect waves-light", type: "submit", value: "コメント" %>
+      <% end %>
+<!--       <%= form_tag("/posts/#{@post.id}/comments", method: :post) do %>
+        <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
+        <input type="submit" value="SENT">
+      <% end %> -->
+    <% end %>
+  </div>
+  <div class="comments">
+    <p>＜コメント一覧＞</p>
+    <% if @comments %>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
