@@ -1,52 +1,59 @@
-<div class="row">
-  <div class="col s12 m7">
-    <div class="card middle">
-      <div class="card-image">
-        <img src="<%= @post.image %>">
-        <span class="card-title"><%= @post.title %></span>
-      </div>
-      <div class="card-content">
-        <p><%= @post.content %></p>
-      </div>
-      <div class="card-action">
-        <ul>
-          <li><a href="#"><%= @post.user.name %></a></li>
-          <% if user_signed_in? && current_user.id == @post.user_id %>
-          <li>
-            <%= link_to "/posts/#{@post.id}/edit", method: :get do %>
-              <i class="material-icons">mode_edit</i>
-            <% end %>
-            <%= link_to "/posts/#{@post.id}", method: :delete do %>
-              <i class="material-icons">delete</i>
-            <% end %>
-          </li>
+<div class="contents">
+  <div class="contents-main container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <div class="card">
+          <%= link_to "/posts/#{@post.id}", method: :get do %>
+            <div class="card-image">
+              <img src="<%= @post.image %>">
+              <span class="card-title"><%= @post.title %></span>
+            </div>
+            <div class="card-content">
+              <p><%= @post.content %></p>
+            </div>
           <% end %>
-        </ul>
+          <div class="card-action clearfix">
+              <li class="name"><a href="#"><%= @post.user.name %></a></li>
+              <% if user_signed_in? && current_user.id == @post.user_id %>
+              <li class="icons">
+                <%= link_to "/posts/#{@post.id}/edit", method: :get do %>
+                  <i class="material-icons">mode_edit</i>
+                <% end %>
+                <%= link_to "/posts/#{@post.id}", method: :delete do %>
+                  <i class="material-icons">delete</i>
+                <% end %>
+              </li>
+              <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+  <div class="comments">
+    <h5 class="center-align">コメント一覧</h5>
+    <% if @comments %>
+      <% @comments.each do |comment| %>
+        <p class="comment">
+          <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
   <div class="container">
     <!-- ここからフォーム -->
     <% if current_user %>
       <%= form_for [@post, @comment] do |f| %>
-        本文 : <%= f.text_area :text, placeholder:"コメント" %><br />
-        <%= f.submit class: "btn waves-effect waves-light", type: "submit", value: "コメント" %>
-      <% end %>
-<!--       <%= form_tag("/posts/#{@post.id}/comments", method: :post) do %>
-        <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
-        <input type="submit" value="SENT">
-      <% end %> -->
-    <% end %>
-  </div>
-  <div class="comments">
-    <p>＜コメント一覧＞</p>
-    <% if @comments %>
-      <% @comments.each do |comment| %>
-        <p>
-          <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
-          <%= comment.text %>
-        </p>
+          <div class="row">
+            <div class="input-field col s12 m12 l12">
+              <i class="material-icons prefix">comment</i>
+                <%= f.text_field :text, placeholder:"コメントをする..." %>
+            </div>
+            <div class="btn-box">
+              <%= f.submit class: "btn", type: "submit", value: "コメント" %>
+            </div>
+          </div>
       <% end %>
     <% end %>
   </div>

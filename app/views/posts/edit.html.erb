@@ -1,6 +1,27 @@
-<%= form_for @post, url:{action: :update} do |f| %>
-  タイトル: <%= f.text_field :title, placeholder:"タイトルを書いてください" %><br />
-  本文 : <%= f.text_area :content, placeholder:"本文を書いてください" %><br />
-  画像 : <%= f.text_field :image, placeholder:"画像を指定してください" %><br />
-  <%= f.submit class: "btn waves-effect waves-light", type: "submit", value: "更新" %>
-<% end %>
+<div class="new-post">
+  <div>
+    <%= form_for @post, url:{action: :update}, html: {class: 'center-align'} do |f| %>
+      <div class="row">
+        <div class="input-field col s12 m12 l12">
+          <i class="material-icons prefix">mode_edit</i>
+          <%= f.text_field :title, placeholder:"タイトルを書いてください", class:"icon_prefix2" %>
+        </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s12 m12 l12">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.text_area :content, placeholder:"本文を書いてください", class:"materialize-textarea", id:"textarea1" %>
+          </div>
+      </div>
+          <div class="row">
+        <div class="input-field col s12 m12 l12">
+          <i class="material-icons prefix">insert_photo</i>
+          <%= f.text_field :image, placeholder:"画像を指定してください", class:"icon_prefix2" %>
+        </div>
+      </div>
+      <div class="btn waves-effect waves-light">
+        <%= f.submit type: "submit", value: "更新する" %>
+      </div>
+  <% end %>
+  </div>
+</div>
