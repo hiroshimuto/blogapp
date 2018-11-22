@@ -12,8 +12,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(title: post_params[:title], content: post_params[:content], image: post_params[:image], user_id: current_user.id)
+    @post = Post.create(title: post_params[:title], content: post_params[:content], image: post_params[:image], user_id: current_user.id)
     #new.html.erbでsubmitが押されるとcreateアクションが実行される。パラメーターが送られてくる。privateメソッドで受け取るパラメーターを制限。
+    if @post.save
+      redirect_to :root
+    else
+      render :new
+    end
   end
 
   def show
@@ -24,13 +29,16 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.user_id == current_user.id
-      post.update(post_params)
+    @post = Post.find(params[:id])
+    if @post.user_id == current_user.id
+      if @post.update(post_params)
+        redirect_to :action => "update"
+      else
+        render :edit
+      end
     end
   end
 
