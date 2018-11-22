@@ -1,0 +1,21 @@
+.row{
+  .col.s12.m12.l12{
+    width:100%;
+    padding:0 150px;
+    .card-action{
+    list-style: none;
+      .name{
+        float: left;
+      }
+      .icons{
+        float: right;
+      }
+    }
+    .clearfix::after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+}
+

@@ -1,6 +1,6 @@
-<div class="row">
-  <div class="col s7 m3">
-    <div class="card middle">
+
+  <div class="col s12 m12 l12">
+    <div class="card">
       <%= link_to "/posts/#{post.id}", method: :get do %>
         <div class="card-image">
           <img src="<%= post.image %>">
@@ -10,11 +10,10 @@
           <p><%= post.content %></p>
         </div>
       <% end %>
-      <div class="card-action">
-        <ul>
-          <li><a href="#"><%= post.user.name %></a></li>
+      <div class="card-action clearfix">
+          <li class="name"><a href="#"><%= post.user.name %></a></li>
           <% if user_signed_in? && current_user.id == post.user_id %>
-          <li>
+          <li class="icons">
             <%= link_to "/posts/#{post.id}/edit", method: :get do %>
               <i class="material-icons">mode_edit</i>
             <% end %>
@@ -23,8 +22,9 @@
             <% end %>
           </li>
           <% end %>
-        </ul>
       </div>
     </div>
   </div>
-</div>
+
+
+
