@@ -58,3 +58,6 @@ gem 'kaminari'
 gem 'devise'
 #デバックのためのgem
 gem 'pry-rails'
+#画像投稿のためのgem
+gem 'carrierwave'
+gem 'mini_magick'
