@@ -16,7 +16,7 @@
           <div class="row">
         <div class="input-field col s12 m12 l12">
           <i class="material-icons prefix">insert_photo</i>
-          <%= f.text_field :image, placeholder:"画像を指定してください", class:"icon_prefix2" %>
+          <%= f.file_field :image, id: "upload-icon", placeholder:"画像を指定してください" %>
         </div>
       </div>
       <div class="btn waves-effect waves-light">
