@@ -1,6 +1,15 @@
 <div class="new-post">
   <div>
     <%= form_for @post, url:{action: :update}, html: {class: 'center-align'} do |f| %>
+      <% if @post.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="row">
         <div class="input-field col s12 m12 l12">
           <i class="material-icons prefix">mode_edit</i>
