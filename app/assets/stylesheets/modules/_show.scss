@@ -15,6 +15,18 @@
 .material-icons{
   padding: 5px 0;
 }
+.material-icons.liked{
+  color:#ff8a80;
+  padding:0;
+}
+.like{
+  float: right;
+  padding: 0 20px 0 0;
+}
+.counts{
+  text-align:center;
+}
+
 .container .row .btn-box{
   text-align: center;
   .btn{

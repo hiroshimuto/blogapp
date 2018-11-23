@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
+    @like = Like.new()
   end
 
   def edit
@@ -35,7 +36,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.user_id == current_user.id
       if @post.update(post_params)
-        redirect_to :action => "update"
+        redirect_to :root
       else
         render :edit
       end
