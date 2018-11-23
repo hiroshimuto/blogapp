@@ -24,6 +24,26 @@
                 <% end %>
               </li>
               <% end %>
+              <li class="like">
+                <% if user_signed_in? %>
+                  <% if Like.find_by(user_id: current_user.id, post_id: @post.id) %>
+                    <%= button_to post_like_path(@post) ,method: :delete do %>
+                    <i class="material-icons liked transparent">favorite</i>
+                    <p class="counts"><%= @post.likes.count %></p>
+                    <% end %>
+                  <% else %>
+                    <%= form_for [@post, @like] do |f| %>
+                      <%= button_tag type: "submit" do %>
+                        <i class="material-icons transparent">favorite_border</i>
+                      <% end %>
+                    <% end %>
+                    <p class="counts"><%= @post.likes.count %></p>
+                  <% end %>
+                <% else %>
+                  <i class="material-icons liked transparent">favorite</i>
+                  <p class="counts"><%= @post.likes.count %></p>
+                <% end %>
+              </li>
           </div>
         </div>
       </div>
