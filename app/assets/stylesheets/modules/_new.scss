@@ -1,3 +1,32 @@
+.random-box{
+  width:100%;
+  text-align: center;
+  margin-top: 20px;
+  #btn{
+    width: 300px;
+    height: 70px;
+    border-radius: 10px;
+    margin:20px auto 30px;
+    background: #ef454a;
+    text-align: center;
+    line-height: 70px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    opacity:0.9;
+    box-shadow: 0 5px 0 #D1483E;
+    border: 3px solid #D1483E;
+    user-select: none;
+  }
+  #btn:hover{
+    opacity:1;
+  }
+  #btn.pushed{
+  margin-top: 20px;
+  box-shadow: 0 4px 0 #D1483E;
+  }
+}
+
 .new-post{
   width: 960px;
   margin: 20px auto;

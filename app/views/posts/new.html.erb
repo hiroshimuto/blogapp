@@ -1,5 +1,11 @@
 <div class="new-post">
   <div>
+    <div class="random-box">
+      <p>今日のブログテーマをランダムに決めてみよう！</p>
+      <h5 id="btn">ランダムテーマ開始</h5>
+      <h5>今日のテーマは・・・</h5>
+      <h4 id="random-title">??????</h4>
+    </div>
   <%= form_for @post, html: {class: 'center-align'} do |f| %>
     <% if @post.errors.any? %>
       <div id="error_explanation" class="alert alert-danger">
@@ -13,7 +19,7 @@
       <div class="row">
         <div class="input-field col s12 m12 l12">
           <i class="material-icons prefix">mode_edit</i>
-          <%= f.text_field :title, placeholder:"タイトルを書いてください", class:"icon_prefix2" %>
+          <%= f.text_field :title, placeholder:"タイトルを書いてください", class:"icon_prefix2", id:"input" %>
         </div>
       </div>
       <div class="row">
