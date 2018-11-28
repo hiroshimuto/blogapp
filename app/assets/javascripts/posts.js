@@ -1,4 +1,5 @@
 $(function(){
+// ランダムタイトル機能
   var btn = document.getElementById("btn");
   console.log(gon.title);
 
@@ -9,9 +10,6 @@ $(function(){
     $("#input").val(title[n]);
   });
 
-    // var input =  $(".icon_prefix2").val();
-    // console.log(input);
-
   btn.addEventListener("mousedown",function(){
     this.className = "pushed";
   });
@@ -19,4 +17,12 @@ $(function(){
   btn.addEventListener("mouseup",function(){
     this.className = "";
   });
+
+// 文字数カウント機能
+  $("#textarea1").on("keyup", function(){
+    var input = this.value.length;
+    $("#text-count").text(input);
+  });
+
+
 });
