@@ -64,3 +64,6 @@ gem 'mini_magick'
 
 gem 'nokogiri'
 
+# RailsアプリケーションとJavascriptの連携
+gem 'gon'
+

@@ -9,6 +9,10 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     #新規投稿のnewメソッドを記載。
+    @titles = Title.all
+    #pluckメソッド
+    # 引数にカラム名を指定すると、そのカラムの値が配列で返してくれる
+    gon.title = @titles.pluck(:title)
   end
 
   def create

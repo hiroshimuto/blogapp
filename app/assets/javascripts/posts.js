@@ -1,8 +1,9 @@
 $(function(){
   var btn = document.getElementById("btn");
+  console.log(gon.title);
 
   $(btn).on("click", function(){
-    var title = ["今日頑張ったこと", "今日嬉しかったこと", "今日のニュースについて", "明日やりたいこと"];
+    var title = gon.title;
     var n = Math.floor(Math.random()* title.length);
     $("#random-title").text(title[n]);
     $("#input").val(title[n]);
