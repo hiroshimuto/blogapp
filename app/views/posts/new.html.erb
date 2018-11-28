@@ -19,13 +19,14 @@
       <div class="row">
         <div class="input-field col s12 m12 l12">
           <i class="material-icons prefix">mode_edit</i>
-          <%= f.text_field :title, placeholder:"タイトルを書いてください", class:"icon_prefix2", id:"input" %>
+          <%= f.text_field :title, placeholder:"タイトルを書いてください", class:"icon_prefix2", id:"input", readonly:true %>
         </div>
       </div>
       <div class="row">
           <div class="input-field col s12 m12 l12">
             <i class="material-icons prefix">mode_edit</i>
             <%= f.text_area :content, placeholder:"本文を書いてください", class:"materialize-textarea", id:"textarea1" %>
+            <p><span id ="text-count">0</span>文字入力されています。</p>
           </div>
       </div>
           <div class="row">
